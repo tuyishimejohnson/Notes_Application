@@ -1,36 +1,34 @@
 import React, { useState } from 'react'
 
 const Todos = () => {
-    const [tasks, setTasks] = useState(["Eat", "Drink", "Study", "Get out"])
+    const [tasks, setTasks] = useState([])
     const [newTask, setNewTask] = useState("")  
 
     const handleInput = (event) => {
         setNewTask(event.target.value)
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-    }
+    
 
     const addTask = () => {
-        setTasks(prevState => [...prevState, newTask])
-        setNewTask("")
+        if(newTask.trim() !== "") {
+            setTasks(prevState => [...prevState, newTask])
+            setNewTask("")
+            
+        }
     }
 
     const deleteTask = (index) => {
-
-    }
-
-    const moveTaskUp = (index) => {
-
-    }
-
-    const moveTaskDown = (index) => {
-
+        setTasks(prevState => {
+            const updatedArr =  [...prevState]
+            updatedArr.splice(index, 1)
+            return updatedArr
+        })
+        
     }
 
   return (
-    <form  className='w-2/5 bg-blue-200 m-auto mt-24' onSubmit={handleSubmit}>
+    <div  className='w-2/5 bg-blue-200 m-auto mt-24'>
         <h1 className='text-2xl text-center'>Todo Application</h1>
         <div className='flex m-auto justify-center'>
             <input type="text" placeholder='Enter a Todo' value={newTask} className='bg-gray-100 py-2 w-3/4' onChange={handleInput}/>
@@ -47,7 +45,7 @@ const Todos = () => {
             
         </ul>
         
-    </form>
+    </div>
   )
 }
 
