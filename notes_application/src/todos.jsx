@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 const Todos = () => {
     const [tasks, setTasks] = useState([])
     const [newTask, setNewTask] = useState("")  
+    const [isChecked, setIsChecked] = useState(true)
 
     const handleInput = (event) => {
         setNewTask(event.target.value)
@@ -16,6 +17,10 @@ const Todos = () => {
             setNewTask("")
             
         }
+    }
+
+    const handleCheck = () => {
+        setIsChecked(prevState => !prevState)
     }
 
     const deleteTask = (index) => {
@@ -39,6 +44,7 @@ const Todos = () => {
             {tasks.map((task, index) => 
                 <li key={index} className='flex space-y-3 items-center justify-between px-10'>
                     <span>{task}</span>
+                    <input type="checkbox" checked={isChecked} onChange={handleCheck}/>
                     <button className='bg-white' onClick={() => deleteTask(index)}>Delete task</button>
                 </li>
             )}
