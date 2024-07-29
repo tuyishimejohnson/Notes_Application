@@ -48,7 +48,7 @@ const Todos = () => {
                     <span>{task}</span>
                     <div className='flex gap-4 items-center'>
                         <input type="checkbox" checked={isChecked} onChange={handleCheck} className='w-8 h-8'/>
-                        <button className='border border-gray-200 shadow-md text-white px-4 py-2 rounded-lg hover:bg-gray-500' onClick={() => deleteTask(index)}>< FontAwesomeIcon icon={faTrash} className='text-red-400'/></button>
+                        <button className='border border-gray-200 shadow-md text-white px-4 py-2  rounded-full hover:bg-gray-500' onClick={() => deleteTask(index)}>< FontAwesomeIcon icon={faTrash} className='text-red-400'/></button>
                     </div>
                     
                 </li>
