@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Todos from './todos'
 import SideBar from './sideBar'
+import Editor from './editor'
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
       <div>
         < Todos />
         < SideBar/>
+        < Editor />
       </div>
     </>
   )
