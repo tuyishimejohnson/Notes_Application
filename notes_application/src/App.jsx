@@ -2,20 +2,16 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Todos from './todos'
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
     <>
-      <div className='bg-yellow-500'>
-            <h1>Hello world</h1>
+      <div>
+        < Todos />
       </div>
-    
-      <div className="card">
-        
-      </div>
-      
     </>
   )
 }
