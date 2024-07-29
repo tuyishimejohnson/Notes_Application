@@ -6,7 +6,6 @@ import Todos from './todos'
 
 function App() {
   
-
   return (
     <>
       <div>
