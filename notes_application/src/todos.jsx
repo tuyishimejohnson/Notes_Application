@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 const Todos = () => {
     const [tasks, setTasks] = useState([])
@@ -33,7 +35,7 @@ const Todos = () => {
     }
 
   return (
-    <div  className='w-2/5 bg-blue-200 m-auto mt-24 py-6'>
+    <div  className='w-2/5 bg-blue-200 m-auto mt-24 py-6 text-gray-700'>
         <h1 className='text-2xl text-center py-4 font-semibold'>Todo Application</h1>
         <div className='flex m-auto justify-center'>
             <input type="text" placeholder='Enter a Todo' value={newTask} className='bg-gray-100 py-2 rounded-l-xl pl-5 shadow-lg w-3/4' onChange={handleInput}/>
@@ -44,8 +46,11 @@ const Todos = () => {
             {tasks.map((task, index) => 
                 <li key={index} className='flex space-y-3 items-center justify-between px-10'>
                     <span>{task}</span>
-                    <input type="checkbox" checked={isChecked} onChange={handleCheck}/>
-                    <button className='bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-500' onClick={() => deleteTask(index)}>Delete task</button>
+                    <div className='flex gap-4 items-center'>
+                        <input type="checkbox" checked={isChecked} onChange={handleCheck} className='w-8 h-8'/>
+                        <button className='border border-gray-200 shadow-md text-white px-4 py-2 rounded-lg hover:bg-gray-500' onClick={() => deleteTask(index)}>< FontAwesomeIcon icon={faTrash} className='text-red-400'/></button>
+                    </div>
+                    
                 </li>
             )}
             
