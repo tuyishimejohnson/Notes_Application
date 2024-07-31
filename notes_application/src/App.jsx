@@ -29,7 +29,7 @@ const handleNewNumbers = () => {
   setNewDices(allNewDice())
 }
 
-const result = newDices.map((item, index) => < Die value={item}/>)
+const result = newDices.map((item) => < Die value={item}/>)
   return (
     <>
       <div>

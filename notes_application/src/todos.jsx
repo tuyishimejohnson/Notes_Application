@@ -1,23 +1,21 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faL, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 const Todos = () => {
     const [tasks, setTasks] = useState([])
     const [newTask, setNewTask] = useState("")  
-    const [isChecked, setIsChecked] = useState(false)
+
 
     const handleInput = (event) => {
         setNewTask(event.target.value)
     }
 
     
-
     const addTask = () => {
         if(newTask.trim() !== "") {
-            setTasks(prevState => [...prevState, newTask])
+            setTasks(prevState => [...prevState, {name:newTask, completed:false, markedCheck:false}])
             setNewTask("")
-            
         }
     }
 
@@ -30,10 +28,13 @@ const Todos = () => {
         })
         
     }
-    
-    const handleCheck = () => {
-        setIsChecked(prevState => !prevState)
+
+    const handleCompletedTasks = (value) => {
+        setTasks(prevState => prevState.map(item => (
+            item.name === value ? {...item, completed: !item.completed, markedCheck:!item.markedCheck} : item
+        )))
     }
+    
 
   return (
     <div  className='w-2/5 bg-blue-200 m-auto mt-24 py-6 text-gray-700'>
@@ -48,9 +49,9 @@ const Todos = () => {
         <ul>
             {tasks.map((task, index) => 
                 <li key={index} className='flex space-y-3 items-center justify-between px-10'>
-                    <span>{task}</span>
+                    <span style={{textDecoration: task.completed ? "line-through" : task.completed}} onClick={() => handleCompletedTasks(task.name)}>{task.name}</span>
                     <div className='flex gap-4 items-center'>
-                        <input type="checkbox" defaultChecked={isChecked} onChange={handleCheck} className='w-8 h-8 rounded-lg'/>
+                        <input type="checkbox" checked={task.markedCheck} onChange={() => handleCompletedTasks(task.markedCheck)} className='w-8 h-8 rounded-lg'/>
                         <button className='border border-gray-200 shadow-md text-white px-4 py-2 
                         rounded-full hover:bg-gray-500' onClick={() => deleteTask(index)}>< FontAwesomeIcon icon={faTrash} className='text-red-400'/></button>
                     </div>
