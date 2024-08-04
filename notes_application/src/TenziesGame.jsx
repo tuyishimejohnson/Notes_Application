@@ -1,6 +1,7 @@
 import React from 'react'
 
 const TenziesGame = () => {
+
   return (
     <div className='w-2/5 m-auto bg-gray-100 flex flex-col gap-10 px-8'>
         <div>
