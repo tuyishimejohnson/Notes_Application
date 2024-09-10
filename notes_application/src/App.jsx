@@ -7,10 +7,11 @@ import Todos from './todos'
 import Editor from './editor' */
 import TenziesGame from './TenziesGame'
 import Die from './Die'
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom'
 import Home from './Home'
 import About from './about'
 import Description from './Description'
+import Footer from './footer'
 
 
 function App() {
@@ -34,6 +35,11 @@ const handleNewNumbers = () => {
 }
 
 const result = newDices.map((item) => < Die value={item}/>)
+  const styles = {
+    color: "red",
+    textDecoration: "underline"
+  }
+
   return (
     <>
 
@@ -55,19 +61,20 @@ const result = newDices.map((item) => < Die value={item}/>)
       <div>
           <BrowserRouter>
             <header className='bg-blue-400 text-white flex gap-3'>
-              <Link to="/">Todos</Link>
-              <Link to="/about">About</Link>
-              <Link to="/Description">Description</Link>
+              <NavLink to="/" style={({isActive}) => isActive ? styles : null } >Todos</NavLink>
+              <NavLink to="/about" style={({isActive}) => isActive ? styles : null }>About</NavLink>
+              <NavLink to="/Description" style={({isActive}) => isActive ? styles : null }>Description</NavLink>
             </header>
-
+          
               <Routes>
                   <  Route path='/' element={<Todos/>} />
                   <  Route path='/about' element={<About/>} />
                   <  Route path='/Description' element={<Description/>} />
                   <  Route path='/Description/:id' element={<Home/>} />
               </Routes>
+              <Footer></Footer>
           </BrowserRouter>
-
+      
       </div>
     </>
   )
