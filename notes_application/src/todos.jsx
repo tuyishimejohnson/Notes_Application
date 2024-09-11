@@ -3,6 +3,8 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 
 const Todos = () => {
+
+
   const [tasks, setTasks] = useState(
     () => JSON.parse(localStorage.getItem("tasks")) || []
   );
