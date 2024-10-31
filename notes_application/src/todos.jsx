@@ -3,8 +3,6 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 
 const Todos = () => {
-
-
   const [tasks, setTasks] = useState(
     () => JSON.parse(localStorage.getItem("tasks")) || []
   );
@@ -62,7 +60,7 @@ const Todos = () => {
       <h1 className="text-2xl text-center py-4 font-semibold">
         Todo Application
       </h1>
-      <div className="flex m-auto justify-center">
+      <form className="flex m-auto justify-center">
         <input
           type="text"
           placeholder="Enter a Todo"
@@ -78,7 +76,7 @@ const Todos = () => {
         >
           Add a task
         </button>
-      </div>
+      </form>
 
       <ul>
         {tasks.map((task, index) => (
@@ -94,15 +92,19 @@ const Todos = () => {
               }}
               onClick={() => handleCompletedTasks(task.name)}
             >
-              {task.name}
+              <div className="flex items-center gap-4">
+                {task.name}
+
+                <input
+                  type="checkbox"
+                  checked={task.markedCheck}
+                  onChange={() => handleCompletedTasks(task.markedCheck)}
+                  className="size-5 rounded-lg "
+                />
+              </div>
+
             </span>
             <form className="flex gap-4 items-center">
-              <input
-                type="checkbox"
-                checked={task.markedCheck}
-                onChange={() => handleCompletedTasks(task.markedCheck)}
-                className="w-8 h-8 rounded-lg"
-              />
               <button
                 className="border border-gray-200 shadow-md text-white px-4 py-2 
                         rounded-full hover:bg-gray-500"
