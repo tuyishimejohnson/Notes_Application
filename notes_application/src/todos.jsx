@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 const Todos = () => {
   const [tasks, setTasks] = useState(
@@ -93,17 +94,26 @@ const Todos = () => {
               onClick={() => handleCompletedTasks(task.name)}
             >
               <div className="">
-                <div className="flex items-center w-10">
+                <div className="flex items-center relative">
                   {task.name}
                   <input
                     type="checkbox"
                     checked={task.markedCheck}
                     onChange={() => handleCompletedTasks(task.markedCheck)}
-                    className="size-3"
+                    className="size-5 appearance-none rounded-full border border-gray-500 cursor-pointer"
+                  />
+                  <FontAwesomeIcon
+                    icon={faCheck}
+                    className={
+                      task.completed
+                        ? `absolute right-1 text-gray-500`
+                        : "hidden"
+                    }
                   />
                 </div>
               </div>
             </span>
+
             <form className="flex gap-4 items-center">
               <button
                 className="border border-gray-200 shadow-md text-white px-4 py-2 
