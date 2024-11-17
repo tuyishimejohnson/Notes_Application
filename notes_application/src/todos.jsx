@@ -92,14 +92,14 @@ const Todos = () => {
               }}
               onClick={() => handleCompletedTasks(task.name)}
             >
-              <div className="bg-red-700">
+              <div className="">
                 <div className="flex items-center w-10">
                   {task.name}
                   <input
                     type="checkbox"
                     checked={task.markedCheck}
                     onChange={() => handleCompletedTasks(task.markedCheck)}
-                    className="size-5"
+                    className="size-3"
                   />
                 </div>
               </div>
